@@ -1,0 +1,14 @@
+{
+  "name": "doc-reader",
+  "repo": "epublica/doc-reader",
+  "description": "Read DOCX files and extracts data from it",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

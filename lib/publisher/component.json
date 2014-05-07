@@ -1,0 +1,14 @@
+{
+  "name": "publisher",
+  "repo": "epublica/publisher",
+  "description": "packages epub directory structure and sends it to store including DRM protection",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

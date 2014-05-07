@@ -1,0 +1,14 @@
+{
+  "name": "epublica",
+  "repo": "packager/epublica",
+  "description": "Packages Epub files from JSON data by converting json to xml. It also builds the directory structure for basic epub files",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

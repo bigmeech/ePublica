@@ -1,0 +1,5 @@
+components
+public/build
+node_modules
+published
+.idea

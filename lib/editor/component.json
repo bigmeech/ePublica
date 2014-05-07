@@ -1,0 +1,14 @@
+{
+  "name": "editor",
+  "repo": "epublica/editor",
+  "description": "Editor API for organising elements of epub files",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

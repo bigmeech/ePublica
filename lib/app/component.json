@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "repo": "epublica/app",
+  "description": "Main App Container. Contains ng Routes and Main Controller",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
