@@ -21,6 +21,12 @@
     "ejs":"*"
   },
   "devDependencies":{
-        "node-dev":"*"
+    "node-dev":"*",
+    "phantomjs":"*",
+    "mocha-phantomjs":"*",
+    "grunt":"*",
+    "should":"*",
+    "testacular":"*"
+
   }
 }
