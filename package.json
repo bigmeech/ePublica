@@ -1,9 +1,9 @@
 {
-  "name": "application-name",
+  "name": "epublica",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "bin/launcher"
+    "start": "I:/projects/epublica/bin/launcher.cmd"
   },
   "dependencies": {
     "express": "3.5.1",
@@ -16,7 +16,8 @@
     "nodesql":"*",
     "adm-zip":"*",
     "archiver":"*",
-    "consolidate":"*"
+    "consolidate":"*",
+    "oauth":"*"
   },
   "devDependencies":{
         "node-dev":"*"
