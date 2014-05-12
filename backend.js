@@ -13,11 +13,13 @@ var users = require('./lib/users/routes')
 
 var app = express();
 
+var staticDir = path.join(__dirname, "/public")
+
 // all environments
 app.configure(function(){
     app.engine('html', cons.ejs);
     app.set('port', process.env.PORT || 3000);
-    app.set('views', path.join(__dirname, 'views'));
+    app.set('views', staticDir);
     app.set('view engine', 'html');
     app.use(express.favicon());
     app.use(express.logger('dev'));
@@ -35,7 +37,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', users.index);
+app.get('/', function(req,res){res.render('index')});
 app.get('/users', users.getUser);
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -17,7 +17,8 @@
     "adm-zip":"*",
     "archiver":"*",
     "consolidate":"*",
-    "oauth":"*"
+    "oauth":"*",
+    "ejs":"*"
   },
   "devDependencies":{
         "node-dev":"*"
