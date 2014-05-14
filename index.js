@@ -1,12 +1,14 @@
 var application = require('app');
-    config      = require("config");
 
 require("home");
 require("editor");
 
-var app = angular.module("epublica",[
+var app = angular.module('epublica',[
+    "ui.router",
     'home',
     'editor'
-])
+]);
 
-app.configure(['$locationProvider'])
+app.config(['$stateProvider','$urlRouterProvider',application.config]);
+app.controller('MainApplicationController',application.controller);
+module.exports = app;

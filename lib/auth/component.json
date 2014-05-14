@@ -1,7 +1,7 @@
 {
-  "name": "editor",
-  "repo": "epublica/editor",
-  "description": "Editor API for organising elements of epub files",
+  "name": "auth",
+  "repo": "epublica/auth",
+  "description": "Authentication module for ePublica",
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {},
@@ -10,8 +10,5 @@
   "main": "index.js",
   "scripts": [
     "index.js"
-  ],
-  "styles":[
-    "style.css"
   ]
 }

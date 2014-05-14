@@ -1,0 +1,14 @@
+{
+  "name": "apptheme",
+  "repo": "epublica/apptheme",
+  "description": "Base theme for UI widgets",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "styles": [
+    "apptheme.css",
+    "normalize.css"
+  ]
+}

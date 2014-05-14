@@ -4,10 +4,19 @@
   "description": "Main BE application, to manage users, store, content publishing, and developer APIs",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "component/jquery": "*",
+    "component/underscore": "*"
+  },
   "development": {},
   "license": "MIT",
   "main": "index.js",
+  "paths":["lib"],
+  "local":[
+    "app",
+    "editor",
+    "home"
+  ],
   "scripts": [
     "index.js"
   ]
