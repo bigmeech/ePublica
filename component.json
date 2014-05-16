@@ -15,7 +15,8 @@
   "local":[
     "app",
     "editor",
-    "home"
+    "home",
+    "appTheme"
   ],
   "scripts": [
     "index.js"

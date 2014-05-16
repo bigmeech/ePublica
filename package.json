@@ -18,7 +18,10 @@
     "archiver":"*",
     "consolidate":"*",
     "oauth":"*",
-    "ejs":"*"
+    "ejs":"*",
+    "oauthorize":"*",
+    "passport":"*",
+    "passport-local":"*"
   },
   "devDependencies":{
     "node-dev":"*",
