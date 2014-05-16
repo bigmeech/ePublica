@@ -117,7 +117,7 @@ abbr[title] {
 }
 
 /*
- * Addresses style.css set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ * Addresses style.css.css set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
 
 b,
@@ -285,8 +285,8 @@ input {
 /*
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
  *    and `video` controls.
- * 2. Corrects inability to style.css clickable `input` types in iOS.
- * 3. Improves usability and consistency of cursor style.css between image-type
+ * 2. Corrects inability to style.css.css clickable `input` types in iOS.
+ * 3. Improves usability and consistency of cursor style.css.css between image-type
  *    `input` and others.
  */
 

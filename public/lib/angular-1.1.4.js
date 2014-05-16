@@ -266,7 +266,7 @@ function stripWhitespace(str) {
  *
  * @description
  * A function that performs no operations. This function can be useful when writing code in the
- * functional style.css.
+ * functional style.css.css.
    <pre>
      function foo(callback) {
        var result = calculateResult();
@@ -285,7 +285,7 @@ noop.$inject = [];
  *
  * @description
  * A function that returns its first argument. This function is useful when writing code in the
- * functional style.css.
+ * functional style.css.css.
  *
    <pre>
      function transformer(transformationFn, value) {
@@ -3081,7 +3081,7 @@ function $AnimationProvider($provide) {
  * All that is required is the following CSS code:
  *
  * <pre>
- * <style.css type="text/css">
+ * <style.css.css type="text/css">
  * /&#42;
  *  The animate-enter prefix is the event name that you
  *  have provided within the ngAnimate attribute.
@@ -3106,7 +3106,7 @@ function $AnimationProvider($provide) {
  *  /&#42; The animation code itself &#42;/
  *  opacity: 1;
  * }
- * </style.css>
+ * </style.css.css>
  *
  * <div ng-directive ng-animate="{enter: 'animate-enter'}"></div>
  * </pre>
@@ -12919,7 +12919,7 @@ var VALID_CLASS = 'ng-valid',
  * collaborate together to achieve the desired result.
  *
  * <example module="customControl">
-    <file name="style.css.css">
+    <file name="style.css.css.css">
       [contenteditable] {
         border: 1px solid black;
         background-color: white;
@@ -13616,7 +13616,7 @@ function classDirective(name, selector) {
       <br>
       <span ng-class="myVar">Sample Text</span>
      </file>
-     <file name="style.css.css">
+     <file name="style.css.css.css">
        .my-class {
          color: red;
        }
@@ -13668,7 +13668,7 @@ var ngClassDirective = classDirective('', true);
           </li>
         </ol>
      </file>
-     <file name="style.css.css">
+     <file name="style.css.css.css">
        .odd {
          color: red;
        }
@@ -13715,7 +13715,7 @@ var ngClassOddDirective = classDirective('Odd', 0);
           </li>
         </ol>
      </file>
-     <file name="style.css.css">
+     <file name="style.css.css.css">
        .odd {
          color: red;
        }
@@ -15180,11 +15180,11 @@ var ngHideDirective = ['$animator', function($animator) {
  * @name ng.directive:ngStyle
  *
  * @description
- * The `ngStyle` directive allows you to set CSS style.css on an HTML element conditionally.
+ * The `ngStyle` directive allows you to set CSS style.css.css on an HTML element conditionally.
  *
  * @element ANY
  * @param {expression} ngStyle {@link guide/expression Expression} which evals to an
- *      object whose keys are CSS style.css names and values are corresponding values for those CSS
+ *      object whose keys are CSS style.css.css names and values are corresponding values for those CSS
  *      keys.
  *
  * @example
@@ -15193,16 +15193,16 @@ var ngHideDirective = ['$animator', function($animator) {
         <input type="button" value="set" ng-click="myStyle={color:'red'}">
         <input type="button" value="clear" ng-click="myStyle={}">
         <br/>
-        <span ng-style.css="myStyle">Sample Text</span>
+        <span ng-style.css.css="myStyle">Sample Text</span>
         <pre>myStyle={{myStyle}}</pre>
      </file>
-     <file name="style.css.css">
+     <file name="style.css.css.css">
        span {
          color: black;
        }
      </file>
      <file name="scenario.js">
-       it('should check ng-style.css', function() {
+       it('should check ng-style.css.css', function() {
          expect(element('.doc-example-live span').css('color')).toBe('rgb(0, 0, 0)');
          element('.doc-example-live :button[value=set]').click();
          expect(element('.doc-example-live span').css('color')).toBe('rgb(255, 0, 0)');
@@ -15432,8 +15432,8 @@ var ngSwitchDefaultDirective = ngDirective({
                transclude: true,
                scope: 'isolate',
                locals: { title:'bind' },
-               template: '<div style.css="border: 1px solid black;">' +
-                           '<div style.css="background-color: gray">{{title}}</div>' +
+               template: '<div style.css.css="border: 1px solid black;">' +
+                           '<div style.css.css="background-color: gray">{{title}}</div>' +
                            '<div ng-transclude></div>' +
                          '</div>'
              };
@@ -15831,8 +15831,8 @@ var scriptDirective = ['$templateCache', function($templateCache) {
           Select <a href ng-click="color={name:'not in list'}">bogus</a>.<br>
           <hr/>
           Currently selected: {{ {selected_color:color}  }}
-          <div style.css="border:solid 1px black; height:20px"
-               ng-style.css="{'background-color':color.name}">
+          <div style.css.css="border:solid 1px black; height:20px"
+               ng-style.css.css="{'background-color':color.name}">
           </div>
         </div>
       </doc:source>
@@ -16311,4 +16311,4 @@ var styleDirective = valueFn({
   });
 
 })(window, document);
-angular.element(document).find('head').append('<style.css type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\\:form{display:block;}</style.css>');
+angular.element(document).find('head').append('<style.css.css type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\\:form{display:block;}</style.css.css>');

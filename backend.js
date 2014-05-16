@@ -4,26 +4,20 @@
  */
 
 var express = require('express');
+var app = express();
 var http = require('http');
 var path = require('path');
 var cons = require("consolidate");
-var authServer = require("oauthorize").createServer();
 var passport = require("passport");
-var localStrategy = require("passport-local").Strategy;
-var mongoose = require("mongoose");
+var LocalStrategy = require("passport-local").Strategy;
+var db = require("./lib/DBSchemas");
 
-mongoose.connect("mongodb://localhost/epublica");
 //db models
-var UserModel = null;
-var AuthorModel = null;
-var BookModel = null;
-
 
 //routes definition
 var users = require('./lib/users/routes');
 var pass = require('./lib/auth/routes');
-//console.log(typeof pass);
-var app = express();
+//console.log(typeof pass)
 var staticDir = path.join(__dirname, "/public");
 
 
@@ -45,59 +39,43 @@ app.configure(function(){
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(passport.initialize());
     app.use(passport.session());
-    passport.use(new localStrategy({
-      usernameField:"email",
-      passwordField:"password"
-    },pass.verifier));
 })
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  passport.use(new LocalStrategy({
+    usernameField:"username",
+    passwordField:"password"
+  },function(username,password,done){
+    process.nextTick(function(){
+      console.log("checking Auth!")
+    })
+  }));
 }
-
-//mongodb connections
-//--------------------------------------------------
-var db = mongoose.connection
-db.on("open",function(){
-  //On Open suceed,
-  var userSchema = mongoose.Schema({
-    username:String,
-    password:String,
-    email:String
-  });
-
-  var authorSchema = mongoose.Schema({
-    name:String,
-    email:String,
-    dateCreated:Date
-  });
-
-  var bookSchema = mongoose.Schema({
-    title:String,
-    synopsis:String,
-    price: Number,
-    rating:Number
-  });
-  UserModel = mongoose.model('user',userSchema);
-  AuthorModel = mongoose.model('author',authorSchema);
-  BookModel = mongoose.model('book',bookSchema);
-})
-
-//on DB open error
-//----------------------------------------------
-db.on("error",function(err){
-  console.log("Error Opening mongodb"+err)
-});
 
 //express route definitions
 //----------------------------------------------
 app.get('/', function(req,res){res.render('index')});
 app.get('/users', users.getUser);
 app.post('/login',
-    passport.authenticate('local',{
-  successRedirect:'/main',
-  failureRedirect:'/login'}));
+  passport.authenticate('local',{
+  successRedirect:'/loginGood',
+  failureRedirect:'/loginBad'})
+);
+
+passport.serializeUser(function(user, done){
+  done(null,user);
+});
+passport.deserializeUser(function(user, done){
+  done(null,user);
+});
+app.get('/loginGood',function(req,res){
+  res.send("Welcome to profile");
+});
+app.get('/loginBad',function(req,res){
+  res.send("Failed to LogIn")
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
