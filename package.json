@@ -30,6 +30,5 @@
     "grunt":"*",
     "should":"*",
     "testacular":"*"
-
   }
 }
