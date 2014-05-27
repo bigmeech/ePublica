@@ -37,7 +37,7 @@ app.configure(function(){
     app.use(express.session());
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(passport.initialise());
+    app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.errorHandler());
     passport.use(new LocalStrategy(
