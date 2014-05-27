@@ -29,6 +29,9 @@
     "mocha-phantomjs":"*",
     "grunt":"*",
     "should":"*",
-    "testacular":"*"
+    "testacular":"*",
+    "gulp":"*",
+    "browserify":"*",
+    "gulp-browserify":"*"
   }
 }

@@ -37,22 +37,19 @@ app.configure(function(){
     app.use(express.session());
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(passport.initialize());
+    app.use(passport.initialise());
     app.use(passport.session());
+    app.use(express.errorHandler());
+    passport.use(new LocalStrategy(
+        function(username,password,done){
+          process.nextTick(function(){
+            console.log("checking Auth!")
+          })
+        }));
 })
 
 // development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-  passport.use(new LocalStrategy({
-    usernameField:"username",
-    passwordField:"password"
-  },function(username,password,done){
-    process.nextTick(function(){
-      console.log("checking Auth!")
-    })
-  }));
-}
+if ('development' == app.get('env')) {}
 
 //express route definitions
 //----------------------------------------------
