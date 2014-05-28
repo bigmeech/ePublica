@@ -9,7 +9,7 @@
 
 }
 
-/*Margin definitions*/
+/*wide definitions 23.5% for each column with a 2% gutter*/
 .kw-w-4col,.kw-w-3col,.kw-w-2col, .kw-w-1col{
     float: left;
     margin-right:2%;
@@ -27,6 +27,24 @@
 .kw-w-1col{
     width: 23.5%;
 }
-.kw-w-last{
+.kw-w-4col, .kw-w-last{
     margin-right:0;
+}
+
+/*medium definitions 48.0% for each column with a 4% gutter*/
+.kw-m-2col,.kw-m-1col{
+    float: left;
+    margin-right: 4%;
+}
+
+.kw-m-2col{
+    width: 100%;
+}
+
+.kw-m-2col{
+    width: 48%;
+}
+
+.kw-m-2col,.kw-m-last{
+    margin-right: 0;
 }
