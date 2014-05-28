@@ -1,0 +1,19 @@
+{
+  "name": "dashboard",
+  "repo": "epublica/dashboard",
+  "description": "Dashboard Page with a bunch of features for analytics, payment, content editing and drm protection",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "files":["views"],
+  "scripts": [
+    "index.js",
+    "dashboardController.js"
+  ],
+  "styles": [
+    "dashboard.css"
+  ]
+}
