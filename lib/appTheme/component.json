@@ -10,6 +10,6 @@
   "styles": [
     "apptheme.css",
     "normalize.css",
-    "global.css"
+    "responsive.css"
   ]
 }

@@ -1,0 +1,36 @@
+#dashboard-wrap{
+    height: 100%;
+}
+#dashboard-wrap ul{
+    margin: 0;
+    list-style-type: none;
+    padding: 8px;
+}
+#dashboard-wrap ul a{
+    font-size: 40px;
+}
+
+#dashboard-wrap nav{
+    width: 103px;
+    background-color: #f4726d;
+    height: 100%;
+    color: white;
+    font-weight: 100;
+}
+
+#dashboard-wrap ul li{
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#dashboard-wrap nav ul li a span{
+    font-size: 13px;
+    display: list-item;
+}
+
+#dashboard-wrap ul li:hover{
+    color: #c0c0c0;
+}

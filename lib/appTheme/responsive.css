@@ -5,10 +5,12 @@
     _overflow:visible;
 }
 
-.kw-col{
-
+/* for dev purposes*/
+.kw-w-4col,.kw-w-3col,.kw-w-2col, .kw-w-1col, .kw-m-2col,.kw-m-1col{
+    padding:10px 0;
+    background-color:#f4726d;
+    margin-bottom: 1em;
 }
-
 /*wide definitions 23.5% for each column with a 2% gutter*/
 .kw-w-4col,.kw-w-3col,.kw-w-2col, .kw-w-1col{
     float: left;
