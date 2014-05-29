@@ -8,8 +8,11 @@
   "development": {},
   "license": "MIT",
   "main": "index.js",
+  "files":["views"],
   "scripts": [
-    "index.js"
+    "index.js",
+    "editorDirective.js",
+    "editorController.js"
   ],
   "styles":[
     "style.css"

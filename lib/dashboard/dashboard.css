@@ -8,6 +8,13 @@
 }
 #dashboard-wrap ul a{
     font-size: 40px;
+    color: inherit;
+    text-decoration: none;
+}
+
+#dashboard-wrap ul a:visited,#dashboard-wrap ul a:active{
+    color: inherit;
+    text-decoration: none;
 }
 
 #dashboard-wrap nav{
@@ -37,11 +44,17 @@
 #dashboard-wrap ul li:hover{
     color: #c0c0c0;
 }
-
 .main-header{
     padding: 20px;
     background: #fff;
     position: fixed;
     z-index: 999;
     width: 100%;
+}
+#dashboard-content{
+    padding-top: 100px;
+    padding-left: 139px;
+    font-size: 39px;
+    text-align: center;
+    font-family: "Open Sans";
 }

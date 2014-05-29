@@ -11,6 +11,14 @@ var epublica = angular.module('epublica',[
     'dashboard'
 ]);
 
+
 epublica.config(['$stateProvider','$urlRouterProvider',application.config]);
+
+epublica.run(function($rootScope){
+  //listens for changing state events
+  $rootScope.$on("$stateChangeStart",function(event,toState,toParams,fromState,fromParams){
+    console.log(event)
+  })
+})
 epublica.controller('MainApplicationController',application.controller);
 module.exports = epublica;
