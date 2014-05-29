@@ -10,15 +10,16 @@
   },
   "development": {},
   "license": "MIT",
-  "main": "index.js",
+  "main": "client.js",
   "paths":["lib"],
   "local":[
     "app",
     "editor",
     "home",
-    "appTheme"
+    "appTheme",
+    "dashboard"
   ],
   "scripts": [
-    "index.js"
+    "client.js"
   ]
 }

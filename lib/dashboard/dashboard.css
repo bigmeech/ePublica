@@ -16,6 +16,9 @@
     height: 100%;
     color: white;
     font-weight: 100;
+    position: fixed;
+    z-index: 998;
+    margin-top: 59px;
 }
 
 #dashboard-wrap ul li{
@@ -33,4 +36,12 @@
 
 #dashboard-wrap ul li:hover{
     color: #c0c0c0;
+}
+
+.main-header{
+    padding: 20px;
+    background: #fff;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
 }

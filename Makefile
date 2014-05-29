@@ -1,4 +1,4 @@
-build: components index.js
+build: components client.js
 	@component build --out public/build -v -p /build
 
 components: component.json
