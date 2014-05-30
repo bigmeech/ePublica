@@ -17,7 +17,8 @@
     "editor",
     "home",
     "appTheme",
-    "dashboard"
+    "dashboard",
+    "publications"
   ],
   "scripts": [
     "client.js"
