@@ -3,35 +3,40 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "prestart":"make",
     "start": "node backend.js"
   },
   "dependencies": {
     "express": "3.5.1",
     "jade": "*",
-    "mongoose":"*",
-    "xml2js":"*",
-    "component":"*",
-    "nano":"*",
-    "node-mysql":"*",
-    "nodesql":"*",
-    "adm-zip":"*",
-    "archiver":"*",
-    "consolidate":"*",
-    "oauth":"*",
-    "ejs":"*",
-    "oauthorize":"*",
-    "passport":"*",
-    "passport-local":"*"
+    "mongoose": "*",
+    "xml2js": "*",
+    "component": "*",
+    "nano": "*",
+    "node-mysql": "*",
+    "nodesql": "*",
+    "adm-zip": "*",
+    "archiver": "*",
+    "consolidate": "*",
+    "oauth": "*",
+    "ejs": "*",
+    "oauthorize": "*",
+    "passport": "*",
+    "passport-local": "*"
   },
-  "devDependencies":{
-    "node-dev":"*",
-    "phantomjs":"*",
-    "mocha-phantomjs":"*",
-    "grunt":"*",
-    "should":"*",
-    "testacular":"*",
-    "gulp":"*",
-    "browserify":"*",
-    "gulp-browserify":"*"
+  "devDependencies": {
+    "node-dev": "*",
+    "phantomjs": "*",
+    "mocha-phantomjs": "*",
+    "grunt": "*",
+    "should": "*",
+    "testacular": "*",
+    "gulp": "*",
+    "browserify": "*",
+    "gulp-browserify": "*"
+  },
+  "subdomain": "kawee-ePublica",
+  "engines": {
+    "node": "0.10.x"
   }
 }

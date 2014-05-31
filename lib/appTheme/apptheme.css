@@ -45,3 +45,11 @@ a:hover.tooltips span {
     margin-left: 15px;
     z-index: 999;
 }
+
+.blur{
+    -webkit-filter:grayscale(100%)blur(5px);
+    -moz-filter:grayscale(100%)blur(5px);
+    -o-filter:grayscale(100%)blur(5px);
+    -ms-filter:grayscale(100%)blur(5px);
+    filter:grayscale(100%)blur(5px)
+}

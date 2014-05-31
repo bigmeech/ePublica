@@ -34,7 +34,7 @@ app.configure(function(){
     app.use(express.urlencoded());
     app.use(express.methodOverride());
     app.use(express.cookieParser('your secret here'));
-    app.use(express.session());
+    app.use(express.session({secret:"Opensesamie85"}));
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(passport.initialize());
