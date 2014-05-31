@@ -4,7 +4,7 @@
 #dashboard-wrap ul{
     margin: 0;
     list-style-type: none;
-    padding: 8px;
+    padding: 0;
 }
 #dashboard-wrap ul a{
     font-size: 40px;
@@ -19,7 +19,7 @@
 
 #dashboard-wrap nav{
     width: 103px;
-    background-color: #f4726d;
+    background-color: #707070;
     height: 100%;
     color: white;
     font-weight: 100;
@@ -29,11 +29,13 @@
 }
 
 #dashboard-wrap ul li{
-    padding: 8px;
+    padding: 20px;
     text-align: center;
-    margin-bottom: 30px;
-    margin-top: 10px;
     cursor: pointer;
+}
+
+#dashboard-wrap ul li:hover{
+    background-color: #4D4D4D;
 }
 
 #dashboard-wrap nav ul li a span{
@@ -45,8 +47,9 @@
     color: #c0c0c0;
 }
 .main-header{
+    color: #ffffff;
     padding: 20px;
-    background: #fff;
+    background: #f4726d;
     position: fixed;
     z-index: 999;
     width: 100%;
