@@ -19,7 +19,14 @@ epublica.config(['$stateProvider','$urlRouterProvider',application.config]);
 epublica.run(function($rootScope){
   //listens for changing state events
   $rootScope.$on("$stateChangeStart",function(event,toState,toParams,fromState,fromParams){
-    console.log(event)
+    var evtObj = {
+      event:event,
+      toState:toState,
+      toParams:toParams,
+      fromState:fromState,
+      fromParams:fromParams
+    }
+    $rootScope.$broadcast("loadStart",evtObj);
   })
 })
 epublica.controller('MainApplicationController',application.controller);

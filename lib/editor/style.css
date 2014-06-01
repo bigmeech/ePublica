@@ -41,6 +41,11 @@ html,body{
     background: linear-gradient(to bottom,  #f2f0ed 0%,#eaeaea 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f0ed', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
     border:1px solid #ddd;
+    margin-top: 61px;
+    text-align: left;
+    margin-left: 80px;
+    padding: 5px;
+    font-size: 20px;
 }
 
 .tbc-fontsize{
@@ -48,6 +53,7 @@ html,body{
     min-width:4px;
     width:30px;
     padding:10px;
+    font-size: 14px;
 }
 button{
     border:1px solid #ddd;
@@ -74,7 +80,7 @@ button{
     display:inline-block;
     color:#777777;
     font-family:arial;
-    font-size:15px;
+    font-size:14px !important;
     font-weight:bold;
     font-style:normal;
     text-decoration:none;
