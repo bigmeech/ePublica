@@ -1,9 +1,10 @@
 {
   "name": "epublica",
-  "version": "0.0.1-2",
+  "version": "0.0.1-5",
   "private": true,
   "scripts": {
-    "start": "make && node backend.js"
+    "prestart": "make",
+    "start": "node backend.js"
   },
   "dependencies": {
     "express": "3.5.1",
