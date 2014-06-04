@@ -3,8 +3,7 @@
   "version": "0.0.1-5",
   "private": true,
   "scripts": {
-    "prestart": "make",
-    "start": "node backend.js"
+    "start": "make & node-dev backend.js"
   },
   "dependencies": {
     "express": "3.5.1",
@@ -14,6 +13,7 @@
     "component": "*",
     "nano": "*",
     "node-mysql": "*",
+    "nodeoffice":"*",
     "nodesql": "*",
     "adm-zip": "*",
     "archiver": "*",
@@ -22,7 +22,9 @@
     "ejs": "*",
     "oauthorize": "*",
     "passport": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "swig":"*",
+    "mongodb":"*"
   },
   "devDependencies": {
     "node-dev": "*",

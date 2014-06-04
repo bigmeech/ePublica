@@ -10,7 +10,10 @@ var path = require('path');
 var cons = require("consolidate");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
-var db = require("./lib/DBSchemas");
+var mClient = require('mongodb').MongoClient;
+var mServer = require('mongodb').Server;
+
+//var db = require("./lib/database");
 
 //db models
 
@@ -60,6 +63,10 @@ app.post('/login',
   successRedirect:'/loginGood',
   failureRedirect:'/loginBad'})
 );
+
+app.get('*',function(req,res){
+  res.render('lost');
+})
 
 passport.serializeUser(function(user, done){
   done(null,user);
