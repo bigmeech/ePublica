@@ -1,0 +1,46 @@
+{
+  "name": "epublica",
+  "version": "0.0.1-5",
+  "private": true,
+  "scripts": {
+    "start": "make & node-dev backend.js"
+  },
+  "dependencies": {
+    "express": "3.5.1",
+    "jade": "*",
+    "mongoose": "*",
+    "xml2js": "*",
+    "component": "*",
+    "nano": "*",
+    "node-mysql": "*",
+    "nodeoffice": "*",
+    "nodesql": "*",
+    "adm-zip": "*",
+    "archiver": "*",
+    "consolidate": "*",
+    "oauth": "*",
+    "ejs": "*",
+    "oauthorize": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "swig": "*",
+    "mongodb": "*"
+  },
+  "devDependencies": {
+    "node-dev": "*",
+    "phantomjs": "*",
+    "mocha-phantomjs": "*",
+    "grunt": "*",
+    "should": "*",
+    "testacular": "*",
+    "gulp": "*",
+    "browserify": "*",
+    "gulp-browserify": "*",
+    "karma-jasmine": "^0.1.5",
+    "karma-chrome-launcher": "^0.1.4"
+  },
+  "subdomain": "kawee-ePublica",
+  "engines": {
+    "node": "0.10.x"
+  }
+}

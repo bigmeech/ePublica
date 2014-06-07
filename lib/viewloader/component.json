@@ -1,0 +1,21 @@
+{
+  "name": "viewloader",
+  "repo": "epublica/viewloader",
+  "description": "Handles view load events and animation for all routes and paths",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "files":["views"],
+  "scripts": [
+    "index.js"
+  ],
+  "templates": [
+    "template.html"
+  ],
+  "styles": [
+    "viewloader.css"
+  ]
+}

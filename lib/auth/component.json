@@ -1,0 +1,14 @@
+{
+  "name": "auth",
+  "repo": "epublica/auth",
+  "description": "Authentication module for ePublica",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

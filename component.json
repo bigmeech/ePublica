@@ -1,0 +1,26 @@
+{
+  "name": "epublica",
+  "repo": "epublica/epublica",
+  "description": "Main BE application, to manage users, store, content publishing, and developer APIs",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/jquery": "*",
+    "component/underscore": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "client.js",
+  "paths":["lib"],
+  "local":[
+    "app",
+    "editor",
+    "home",
+    "appTheme",
+    "dashboard",
+    "publications"
+  ],
+  "scripts": [
+    "client.js"
+  ]
+}

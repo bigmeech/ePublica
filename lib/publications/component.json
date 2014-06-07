@@ -1,0 +1,19 @@
+{
+  "name": "publications",
+  "repo": "epublica/publications",
+  "description": "Publications module for dashboard component",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "files":["views"],
+  "scripts": [
+    "index.js",
+    "publicationsController.js"
+  ],
+  "styles": [
+    "publications.css"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "home",
+  "repo": "epublica/home",
+  "description": "Main Page to site",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "files":["views"],
+  "scripts": [
+    "index.js",
+    "homeController.js"
+  ]
+}
