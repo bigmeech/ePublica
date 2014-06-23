@@ -46,7 +46,7 @@ app.configure(function(){
     passport.use(new LocalStrategy(
         function(username,password,done){
           process.nextTick(function(){
-            console.log("checking Auth!")
+            return done;
           })
         }));
 })
@@ -59,9 +59,7 @@ if ('development' == app.get('env')) {}
 app.get('/', function(req,res){res.render('index')});
 app.get('/users', users.getUser);
 app.post('/login',
-  passport.authenticate('local',{
-  successRedirect:'/loginGood',
-  failureRedirect:'/loginBad'})
+  passport.authenticate('local',{successRedirect:'/loginGood',failureRedirect:'/loginBad'})
 );
 
 

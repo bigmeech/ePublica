@@ -14,6 +14,7 @@
     "nano": "*",
     "node-mysql": "*",
     "nodeoffice": "*",
+    "nodeoffice":"*",
     "nodesql": "*",
     "adm-zip": "*",
     "archiver": "*",
@@ -24,7 +25,9 @@
     "passport": "*",
     "passport-local": "*",
     "swig": "*",
-    "mongodb": "*"
+    "mongodb": "*",
+    "swig":"*",
+    "mongodb":"*"
   },
   "devDependencies": {
     "node-dev": "*",
@@ -37,7 +40,8 @@
     "browserify": "*",
     "gulp-browserify": "*",
     "karma-jasmine": "^0.1.5",
-    "karma-chrome-launcher": "^0.1.4"
+    "karma-chrome-launcher": "^0.1.4",
+    "gulp-browserify": "*"
   },
   "subdomain": "kawee-ePublica",
   "engines": {

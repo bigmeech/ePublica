@@ -14,6 +14,7 @@ html,body{
     height:800px;
     margin:0 auto;
     margin-top: 25px;
+    margin-top:70px;
     padding:40px;
     -webkit-box-shadow: 1px 1px 3px 1px #DBDBDB;
     box-shadow: 1px 1px 3px 1px #DBDBDB;
@@ -25,6 +26,10 @@ html,body{
     font-family: 'EB Garamond', serif;
     font-size:20px;
     overflow: hidden;
+    height:100%;
+    font-family: 'EB Garamond', serif;
+    font-size:20px;
+>>>>>>> fef7ca58e08a738f1389a85ae3546224471d28d4
 }
 
 #kw-toolbar{
@@ -124,9 +129,11 @@ button:hover {
     border:none;
     display:inline-block;
 }
-
-.kw-button-toggle-pressed, .kw-button-toggle-pressed:hover{
+.kw-button-toggle-pressed, .kw-button-toggle-pressed:hover {
     color: #ffffff;
+}
+.kw-button-toggle-pressed{
+    color: rgb(247, 247, 247);
     box-shadow: inset 0px 1px 0px 0px #000000;
     background: -webkit-gradient( linear, left top, left bottom, color-stop(9.05, #CCCCCC), color-stop(1, #949494) );
 }
@@ -142,7 +149,6 @@ button:hover {
     background: -ms-linear-gradient(top,  #f2f0ed 0%,#eaeaea 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #f2f0ed 0%,#eaeaea 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f0ed', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
-    position: fixed;
     margin-top: 50px;
     top: 0;
     left: 0;
@@ -152,6 +158,7 @@ button:hover {
 }
 
 .editor-main{
+
 }
 
 .sheet-header{
