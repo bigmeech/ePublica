@@ -1,15 +1,37 @@
 <div id="dashboard-wrap">
-    <div class="main-header">Publications</div>
-    <nav>
-        <ul>
-            <li><a class="tooltips" ui-sref="dashboard.home"><i class="fa fa-university"></i><span>Home</span></a></li>
-            <li><a class="tooltips" ui-sref="dashboard.publications"><i class="fa fa-book"></i><span>Publications</span></a></li>
-            <li><a class="tooltips"><i class="fa fa-bar-chart-o"></i><span>Analytics</span></a></li>
-            <li><a class="tooltips"><i class="fa fa-unlock-alt"></i><span>DRM Tools</span></a></li>
-            <li><a class="tooltips"><i class="fa fa-money"></i><span>Payment</span></a></li>
-            <li><a class="tooltips"><i class="fa fa-cogs"></i><span>Settings</span></a></li>
-        </ul>
-    </nav>
+    <div>
+        <nav>
+            <div id="logo-wrap">
+                <a class="logo" ui-sref="dashboard.home">kaweé</a>
+            </div>
+            <div class="nav-group" id="main-menu">Main</div>
+            <div class="nav-list">
+                <ul>
+                    <li><a ui-sref="dashboard.publications"><i class="fa fa-book mm-item-icon"></i>Publications</a></li>
+                    <li><a><i class="fa fa-tasks mm-item-icon"></i><span>Analytics</span></a></li>
+                    <li><a><i class="fa fa-lock mm-item-icon"></i><span>DRM Tools</span></a></li>
+                    <li><a><i class="fa fa-credit-card mm-item-icon"></i><span>Payment</span></a></li>
+                    <li><a><i class="fa fa-cog mm-item-icon"></i><span>Settings</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-group">Feedback</div>
+            <div class="nav-list">
+                <ul>
+                    <li><a><i class="fa fa-warning mm-item-icon"></i>Errata</a></li>
+                    <li><a><i class="fa fa-comments-o mm-item-icon"></i>Reviews</a></li>
+                    <li><a><i class="fa fa-envelope-o mm-item-icon"></i>Messages</a></li>
+                </ul>
+            </div>
+            <div class="nav-group">My Account</div>
+            <div class="nav-list">
+                <ul>
+                    <li><a><i class="fa fa-edit mm-item-icon"></i>Manage</a></li>
+                    <li><a><i class="fa fa-sign-out mm-item-icon"></i>Log Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
     <div id="dashboard-content">
         <div ui-view></div>
     </div>

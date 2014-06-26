@@ -175,7 +175,10 @@ html,body{
     font-family: 'Roboto', sans-serif;
     background-color: #eee;
 }
-
+a, a:visited, a:hover, a:active{
+    text-decoration: none;
+    color: #ffffff;
+}
 .main{
     height: 100%;
     width: 100%;
@@ -228,6 +231,19 @@ a:hover.tooltips span {
 .h1-inset{
     color: rgba(180, 180, 180, 0.8);
     text-shadow: 1px 4px 6px #FFF, 0 0 0 #000, 1px 4px 6px #FFF;
+}
+
+.mm-item-icon{
+    padding: 7px;
+}
+
+.nav-list{
+    margin-bottom: 10px;
+}
+
+
+.nav-group{
+    color: #949494;
 }
 /*! normalize.css v2.0.1 | MIT License | git.io/normalize */
 
@@ -665,12 +681,15 @@ table {
     list-style-type: none;
     padding: 0;
 }
-#dashboard-wrap ul a{
-    font-size: 30px;
+#dashboard-wrap ul a {
+    font-size: 15px;
     color: inherit;
     text-decoration: none;
     display: block;
-    padding: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Roboto";
 }
 
 #dashboard-wrap ul a:visited,#dashboard-wrap ul a:active{
@@ -679,18 +698,16 @@ table {
 }
 
 #dashboard-wrap nav{
-    width: 80px;
-    background-color: #707070;
+    width: 220px;
+    background-color: #FFAD00;
     height: 100%;
     color: white;
     font-weight: 100;
     position: fixed;
     z-index: 998;
-    margin-top: 60px;
 }
 
 #dashboard-wrap ul li{
-    text-align: center;
     cursor: pointer;
 }
 
@@ -699,11 +716,6 @@ table {
     -webkit-box-shadow: inset -1px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: inset -1px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: inset -1px 0px 5px 0px rgba(0,0,0,0.75);
-}
-
-#dashboard-wrap nav ul li a span{
-    font-size: 13px;
-    display: list-item;
 }
 
 #dashboard-wrap ul li:hover{
@@ -728,4 +740,24 @@ table {
     width: 100%;
     top: 60px;
     position: absolute
+}
+
+.mm-item{
+
+}
+
+#logo-wrap{
+    width: 100%;
+    height: 160px;
+    padding: 49px;
+    box-sizing: border-box;
+
+}
+
+#logo-wrap a{
+    font-size: 45px;
+}
+
+.nav-group{
+    padding-left: 20px;
 }

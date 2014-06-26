@@ -4,7 +4,10 @@ html,body{
     font-family: 'Roboto', sans-serif;
     background-color: #eee;
 }
-
+a, a:visited, a:hover, a:active{
+    text-decoration: none;
+    color: #ffffff;
+}
 .main{
     height: 100%;
     width: 100%;
@@ -57,4 +60,17 @@ a:hover.tooltips span {
 .h1-inset{
     color: rgba(180, 180, 180, 0.8);
     text-shadow: 1px 4px 6px #FFF, 0 0 0 #000, 1px 4px 6px #FFF;
+}
+
+.mm-item-icon{
+    padding: 7px;
+}
+
+.nav-list{
+    margin-bottom: 10px;
+}
+
+
+.nav-group{
+    color: #949494;
 }

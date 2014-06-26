@@ -73,7 +73,8 @@ app.get('/loginGood',function(req,res){
   res.send("Welcome to profile");
 });
 app.get('/loginBad',function(req,res){
-  res.send("Failed to LogIn")
+  res.send("Failed to LogIn");
+  console.log("Login Bad Called");
 });
 
 http.createServer(app).listen(app.get('port'), function(){
