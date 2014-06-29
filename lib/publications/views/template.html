@@ -1,4 +1,55 @@
-<div>
-    <h4 class="h1-inset">Publications are listed here</h4>
-    <div v-loader></div>
+<div id="pub-wrap">
+    <header>
+        <div class="header-wrap">
+            <h4>Publications</h4>
+            <div class="control-bar">
+                <button data-toggle="modal" data-target="#create-pub-dialog" class="btn btn-large">Create Publication</button>
+            </div>
+        </div>
+    </header>
+    <div id="pub-body">
+        <ul id="pub-list">
+            <li class="pub">
+                <div class="pub-li-menu">
+                    <ul>
+                        <li><button>Go Live</button></li>
+                        <li><button>Edit Publication</button></li>
+                        <li><button>Delete Publication</button></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="pub">
+                <div class="pub-li-wrap">
+                    <button class="btn btn-primary"> + New Publication </button>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <!--markup for create publication dialog-->
+    <div id="create-pub-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="create-pub-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Create a Publication</h5>
+                    <button class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-body">
+                    <h3>Select Publication Type</h3>
+                    <ul>
+                        <li>Short Story</li>
+                        <li>Novel</li>
+                        <li>Magazine</li>
+                    </ul>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="createPub()">Create</button>
+                        <button class="btn btn-small" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

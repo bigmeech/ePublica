@@ -1,13 +1,6 @@
 /* Styles go here */
 @import url(http://fonts.googleapis.com/css?family=EB+Garamond);
 
-*{
-    outline:none;
-}
-html,body{
-    background:#eee;
-}
-
 #sheet{
     background-color:#fff;
     width:680px;
@@ -61,7 +54,7 @@ html,body{
     padding:3px;
     font-size: 14px;
 }
-button{
+.editorbutton{
     border:1px solid #ddd;
     padding:5px;
     -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -94,12 +87,14 @@ button{
     text-shadow:1px 1px 0px #ffffff;
     min-width:30px;
 }
-button:hover {
+.editorbutton:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
     background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
     background-color:#dfdfdf;
-}button:active {
+}
+
+.editorbutton:active {
      position:relative;
      top:1px;
  }

@@ -385,18 +385,48 @@ module.exports = DashboardController;
 require.register("publications/index.js", function(exports, require, module){
 var pubs = angular.module("publications",[])
 pubs.controller("PublicationsController",require("./publicationsController"));
+pubs.service("PublicationsService",require("./publicationsService"));
 module.exports = pubs;
 
 });
 require.register("publications/publicationsController.js", function(exports, require, module){
 /**
- * Created by JaneCockblocker on 30/05/2014.
+ * Created by Larry Eliemenye on 30/05/2014.
  */
-var pubsController = function($scope){
-
+var pubsController = function($scope, PublicationsService){
+    $scope.createPub = function(){
+        PublicationsService.createPub({});
+    }
 }
 
 module.exports = pubsController;
+});
+require.register("publications/publicationsService.js", function(exports, require, module){
+/**
+ * Created by epublica on 29/06/2014.
+ */
+
+var PublicationsService = function($http){
+    this.$http = $http;
+}
+
+
+
+PublicationsService.prototype.createPub = function(title, isbn, synopsis,price,tags){
+
+    var publication = {
+        title:title,
+        isbn:isbn,
+        synopsis:synopsis,
+        price:price,
+        tags:tags
+    }
+    return this.$http({method:'POST',url:'/createPub',data:publication});
+
+}
+
+
+module.exports = PublicationsService;
 });
 require.register("epublica/client.js", function(exports, require, module){
 var application = require('app');
@@ -467,6 +497,7 @@ require.alias("dashboard/index.js", "dashboard/index.js");
 require.alias("dashboard/index.js", "dashboard/index.js");
 require.alias("publications/index.js", "epublica/deps/publications/index.js");
 require.alias("publications/publicationsController.js", "epublica/deps/publications/publicationsController.js");
+require.alias("publications/publicationsService.js", "epublica/deps/publications/publicationsService.js");
 require.alias("publications/index.js", "epublica/deps/publications/index.js");
 require.alias("publications/index.js", "publications/index.js");
 require.alias("publications/index.js", "publications/index.js");

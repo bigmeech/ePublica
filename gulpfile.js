@@ -1,5 +1,10 @@
 var gulp = require("gulp");
+var paths = {
+    scripts:["lib/*.css"]
+}
 
-gulp.task("default",function(){
-  //start express app on port 3000
-})
+gulp.task("watch", function(){
+    gulp.watch(paths.scripts)
+});
+
+gulp.task("default",['watch']);

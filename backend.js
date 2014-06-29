@@ -20,6 +20,7 @@ var mServer = require('mongodb').Server;
 //routes definition
 var users = require('./lib/users/routes');
 var pass = require('./lib/auth/routes');
+var pub = require("./lib/publications/routes")
 //console.log(typeof pass)
 var staticDir = path.join(__dirname, "/public");
 
@@ -58,10 +59,12 @@ if ('development' == app.get('env')) {}
 //----------------------------------------------
 app.get('/', function(req,res){res.render('index')});
 app.get('/users', users.getUser);
+app.post('/createPub',pub.createPub);
+app.get('/deletePub',pub.deletePub);
+
 app.post('/login',
   passport.authenticate('local',{successRedirect:'/loginGood',failureRedirect:'/loginBad'})
 );
-
 
 passport.serializeUser(function(user, done){
   done(null,user);

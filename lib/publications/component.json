@@ -11,7 +11,8 @@
   "files":["views"],
   "scripts": [
     "index.js",
-    "publicationsController.js"
+    "publicationsController.js",
+    "publicationsService.js"
   ],
   "styles": [
     "publications.css"
