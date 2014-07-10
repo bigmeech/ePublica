@@ -1,7 +1,7 @@
 
 # epublica
 
-  sets up an epub package structure based on user details
+  Ebook Publishing Plaform following the Epub Spec
 
 ## Installation
 
