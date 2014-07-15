@@ -38,4 +38,8 @@ gulp.task("run:karma", function(){
         })
 });
 
+gulp.task('watch',function(){
+
+})
+
 gulp.task("default", ['build:component-styles','build:component-scripts','run:karma']);
