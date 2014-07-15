@@ -1,3 +1,5 @@
+;(function(){
+'use strict';
 
 /**
  * Require the given path.
@@ -12,13 +14,8 @@ function require(path, parent, orig) {
 
   // lookup failed
   if (null == resolved) {
-    orig = orig || path;
-    parent = parent || 'root';
-    var err = new Error('Failed to require "' + orig + '" from "' + parent + '"');
-    err.path = orig;
-    err.parent = parent;
-    err.require = true;
-    throw err;
+    throwError()
+    return
   }
 
   var module = require.modules[resolved];
@@ -34,6 +31,16 @@ function require(path, parent, orig) {
     module.call(this, mod.exports, require.relative(resolved), mod);
     delete module._resolving;
     module.exports = mod.exports;
+  }
+
+  function throwError () {
+    orig = orig || path;
+    parent = parent || 'root';
+    var err = new Error('Failed to require "' + orig + '" from "' + parent + '"');
+    err.path = orig;
+    err.parent = parent;
+    err.require = true;
+    throw err;
   }
 
   return module.exports;
@@ -65,21 +72,21 @@ require.aliases = {};
  * @api private
  */
 
+require.exts = [
+    '',
+    '.js',
+    '.json',
+    '/index.js',
+    '/index.json'
+ ];
+
 require.resolve = function(path) {
   if (path.charAt(0) === '/') path = path.slice(1);
 
-  var paths = [
-    path,
-    path + '.js',
-    path + '.json',
-    path + '/index.js',
-    path + '/index.json'
-  ];
-
-  for (var i = 0; i < paths.length; i++) {
-    var path = paths[i];
-    if (require.modules.hasOwnProperty(path)) return path;
-    if (require.aliases.hasOwnProperty(path)) return require.aliases[path];
+  for (var i = 0; i < 5; i++) {
+    var fullPath = path + require.exts[i];
+    if (require.modules.hasOwnProperty(fullPath)) return fullPath;
+    if (require.aliases.hasOwnProperty(fullPath)) return require.aliases[fullPath];
   }
 };
 
@@ -93,6 +100,7 @@ require.resolve = function(path) {
  */
 
 require.normalize = function(curr, path) {
+
   var segs = [];
 
   if ('.' != path.charAt(0)) return path;
@@ -101,13 +109,12 @@ require.normalize = function(curr, path) {
   path = path.split('/');
 
   for (var i = 0; i < path.length; ++i) {
-    if ('..' == path[i]) {
+    if ('..' === path[i]) {
       curr.pop();
     } else if ('.' != path[i] && '' != path[i]) {
       segs.push(path[i]);
     }
   }
-
   return curr.concat(segs).join('/');
 };
 
@@ -133,9 +140,14 @@ require.register = function(path, definition) {
 
 require.alias = function(from, to) {
   if (!require.modules.hasOwnProperty(from)) {
-    throw new Error('Failed to alias "' + from + '", it does not exist');
+    throwError()
+    return
   }
   require.aliases[to] = from;
+
+  function throwError () {
+    throw new Error('Failed to alias "' + from + '", it does not exist');
+  }
 };
 
 /**
@@ -148,18 +160,6 @@ require.alias = function(from, to) {
 
 require.relative = function(parent) {
   var p = require.normalize(parent, '..');
-
-  /**
-   * lastIndexOf helper.
-   */
-
-  function lastIndexOf(arr, obj) {
-    var i = arr.length;
-    while (i--) {
-      if (arr[i] === obj) return i;
-    }
-    return -1;
-  }
 
   /**
    * The relative require() itself.
@@ -176,16 +176,20 @@ require.relative = function(parent) {
 
   localRequire.resolve = function(path) {
     var c = path.charAt(0);
-    if ('/' == c) return path.slice(1);
-    if ('.' == c) return require.normalize(p, path);
+    if ('/' === c) return path.slice(1);
+    if ('.' === c) return require.normalize(p, path);
 
     // resolve deps by returning
     // the dep in the nearest "deps"
     // directory
     var segs = parent.split('/');
-    var i = lastIndexOf(segs, 'deps') + 1;
-    if (!i) i = 0;
-    path = segs.slice(0, i + 1).join('/') + '/deps/' + path;
+    var i = segs.length;
+    while (i--) {
+      if (segs[i] === 'deps') {
+        break;
+      }
+    }
+    path = segs.slice(0, i + 2).join('/') + '/deps/' + path;
     return path;
   };
 
@@ -209,7 +213,7 @@ module.exports = {
 });
 require.register("app/appConfig.js", function(exports, require, module){
 /**
- * Created by JaneCockblocker on 14/05/14.
+ * Created by Larry Eliemenye on 14/05/14.
  */
 module.exports = function($stateProvider, $urlRouterProvider){
   //default route
@@ -233,15 +237,17 @@ module.exports = function($stateProvider, $urlRouterProvider){
     templateUrl:"build/editor/views/template.html"
   });
 }
+
 });
 require.register("app/appController.js", function(exports, require, module){
 /**
- * Created by JaneCockblocker on 14/05/14.
+ * Created by Larry Eliemenye on 14/05/14.
  */
 
 module.exports = function($scope){
 
 }
+
 });
 require.register("editor/index.js", function(exports, require, module){
 var editor = angular.module("editor",[])
@@ -251,7 +257,7 @@ module.exports = editor;
 });
 require.register("editor/editorDirective.js", function(exports, require, module){
 /**
- * Created by JaneCockblocker on 29/05/2014.
+ * Created by Larry Eliemenye on 29/05/2014.
  */
 
 var contentEditor = function(){
@@ -298,7 +304,7 @@ module.exports = contentEditor;
 });
 require.register("editor/editorController.js", function(exports, require, module){
 /**
- * Created by JaneCockblocker on 29/05/2014.
+ * Created by Larry Eliemneye on 29/05/2014.
  */
 
 //strategy pattern to change editor toolbar logic at run time base on what button was clicked
@@ -346,6 +352,7 @@ var editorController = function($scope){
 }
 
 module.exports = editorController;
+
 });
 require.register("home/index.js", function(exports, require, module){
 var homeController =  require("./homeController")
@@ -356,7 +363,7 @@ module.exports = home;
 });
 require.register("home/homeController.js", function(exports, require, module){
 /**
- * Created by JaneCockblocker on 14/05/14.
+ * Created by Larry Eliemenye on 14/05/14.
  */
 
 var homeController = function($scope){
@@ -364,6 +371,7 @@ var homeController = function($scope){
 }
 
 module.exports = homeController;
+
 });
 
 require.register("dashboard/index.js", function(exports, require, module){
@@ -374,13 +382,14 @@ module.exports = dashboard;
 });
 require.register("dashboard/dashboardController.js", function(exports, require, module){
 /**
- * Created by JaneCockblocker on 27/05/2014.
+ * Created by Larry Eliemenye on 27/05/2014.
  */
 var DashboardController = function($rootScope, $scope, $http){
 
 }
 
 module.exports = DashboardController;
+
 });
 require.register("publications/index.js", function(exports, require, module){
 var pubs = angular.module("publications",[])
@@ -502,3 +511,10 @@ require.alias("publications/index.js", "epublica/deps/publications/index.js");
 require.alias("publications/index.js", "publications/index.js");
 require.alias("publications/index.js", "publications/index.js");
 require.alias("epublica/client.js", "epublica/index.js");
+if (typeof exports == 'object') {
+  module.exports = require('epublica');
+} else if (typeof define == 'function' && define.amd) {
+  define(function(){ return require('epublica'); });
+} else {
+  window['epublica'] = require('epublica');
+}})();
