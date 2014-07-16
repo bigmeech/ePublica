@@ -4,6 +4,7 @@ var gulp                    = require("gulp"),
     componentStylus         = require("component-stylus");
     gulpKarma               = require("gulp-karma");
     liveReload              = require("gulp-livereload");
+    gulpNode                = require("gulp-nodemon");
     karmaFiles              = [ "/lib/angular-1.2.9.js",
                                 "/lib/angular-mock-1.2.9.js",
                                 "/public/build/build.js",
@@ -45,10 +46,16 @@ gulp.task("run:karma", function(){
         })
 });
 
+gulp.task("run:node",function(){
+    gulpNode({
+        script:'backend.js'
+    });
+})
 //sets up styls, scripts and testpects for watch
 gulp.task('watch', function(){
     gulp.watch(['component.json','lib/**/*.js'],['build:component-scripts']);
     gulp.watch(['component.json','lib/**/*.styl'],['build:component-styles']);
+    gulp.watch(['lib/**/*.js'],['run:node'])
 });
 
 //report error if any

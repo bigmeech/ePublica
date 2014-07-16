@@ -1,0 +1,14 @@
+{
+  "name": "epubprocessor",
+  "repo": "epublica/epubprocessor",
+  "description": "builds an epub file from an input source",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

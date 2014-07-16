@@ -11,7 +11,8 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var mClient = require('mongodb').MongoClient;
 var mServer = require('mongodb').Server;
-
+var epub = require("./lib/epub-processor");
+console.log(epub.build());
 //var db = require("./lib/database");
 
 //db models
