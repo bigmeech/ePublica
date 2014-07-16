@@ -15,6 +15,6 @@
     "publicationsService.js"
   ],
   "styles": [
-    "publications.css"
+    "publications.styl"
   ]
 }

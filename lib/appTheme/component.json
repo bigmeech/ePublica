@@ -8,8 +8,7 @@
   "development": {},
   "license": "MIT",
   "styles": [
-    "apptheme.css",
-    "normalize.css",
-    "responsive.css"
+    "appTheme.styl",
+    "normalize.styl"
   ]
 }

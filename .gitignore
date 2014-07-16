@@ -1,5 +1,6 @@
 components
 public/build
+build
 node_modules
 published
 workspace

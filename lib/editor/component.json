@@ -15,6 +15,6 @@
     "editorController.js"
   ],
   "styles":[
-    "style.css"
+    "editor.styl"
   ]
 }
