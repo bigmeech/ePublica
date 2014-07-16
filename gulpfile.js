@@ -31,7 +31,7 @@ gulp.task("build:component-scripts", function(){
             standalone:true
         }))
         .pipe(gulp.dest('public/build'))
-        .pipe(liveReload())
+        //.pipe(liveReload())
 });
 
 //runs karma using phantomjs as browser . See karma.conf file

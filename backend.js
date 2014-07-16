@@ -12,7 +12,7 @@ var LocalStrategy = require("passport-local").Strategy;
 var mClient = require('mongodb').MongoClient;
 var mServer = require('mongodb').Server;
 var epub = require("./lib/epub-processor");
-console.log(epub.build());
+console.log(epub.createBoilerPlate("./epubs"));
 //var db = require("./lib/database");
 
 //db models
@@ -79,6 +79,13 @@ app.get('/loginGood', function (req, res) {
 app.get('/loginBad', function (req, res) {
     res.send("Failed to LogIn");
     console.log("Login Bad Called");
+});
+
+//so that underlying express process gracefully terminates when nodemon restarts
+process.once('SIGUSR2', function () {
+    gracefulShutdown(function () {
+        process.kill(process.pid, 'SIGUSR2');
+    });
 });
 
 http.createServer(app).listen(app.get('port'), function () {
