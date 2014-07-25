@@ -21,7 +21,7 @@ gulp.task("build:component-styles", function(){
             out:'public/build'
         }))
         .pipe(gulp.dest('public/build'))
-        .pipe(liveReload())
+        //.pipe(liveReload())
 });
 
 //builds application components together from various angularjs components into a final build.js file
@@ -48,21 +48,33 @@ gulp.task("run:karma", function(){
 
 gulp.task("run:node",function(){
     gulpNode({
-        script:'backend.js'
+        script:'backend.js',
+        ignore:['./bin','./build','./components','./public/lib','./node_modules'],
+        ext:'js',
+        env:{
+            'NODE_ENV':'development'
+        }
+    })
+    .on('start',['watch'])
+    .on('change',['watch'])
+    .on('restart',function(){
+        process.once('SIGUSR2', function(){
+            process.kill(process.id,'SIGUSR2');
+        })
     });
 })
 //sets up styls, scripts and testpects for watch
 gulp.task('watch', function(){
-    gulp.watch(['component.json','lib/**/*.js'],['build:component-scripts']);
-    gulp.watch(['component.json','lib/**/*.styl'],['build:component-styles']);
-    gulp.watch(['lib/**/*.js'],['run:node'])
+    //gulp.watch(['component.json','lib/**/*.js'],{ maxListerners:999 },['build:component-scripts']);
+    //gulp.watch(['component.json','lib/**/*.styl'], { maxListerners:999 }, ['build:component-styles']);
+    //gulp.watch(['lib/**/*.js'],['run:node'])
 });
 
-//report error if any
+/*//report error if any
 gulp.task('errors',function(){
     gulp.src('.css/errors.styl')
         .pipe(gulpStylus({errors:true}))
         .pipe(gulp.dest('./css'));
-})
+})*/
 
-gulp.task("default", ['build:component-styles','build:component-scripts','run:karma','watch']);
+gulp.task("default", ['run:node','run:karma']);
