@@ -1,5 +1,3 @@
-;(function(){
-'use strict';
 
 /**
  * Require the given path.
@@ -14,8 +12,13 @@ function require(path, parent, orig) {
 
   // lookup failed
   if (null == resolved) {
-    throwError()
-    return
+    orig = orig || path;
+    parent = parent || 'root';
+    var err = new Error('Failed to require "' + orig + '" from "' + parent + '"');
+    err.path = orig;
+    err.parent = parent;
+    err.require = true;
+    throw err;
   }
 
   var module = require.modules[resolved];
@@ -31,16 +34,6 @@ function require(path, parent, orig) {
     module.call(this, mod.exports, require.relative(resolved), mod);
     delete module._resolving;
     module.exports = mod.exports;
-  }
-
-  function throwError () {
-    orig = orig || path;
-    parent = parent || 'root';
-    var err = new Error('Failed to require "' + orig + '" from "' + parent + '"');
-    err.path = orig;
-    err.parent = parent;
-    err.require = true;
-    throw err;
   }
 
   return module.exports;
@@ -72,21 +65,21 @@ require.aliases = {};
  * @api private
  */
 
-require.exts = [
-    '',
-    '.js',
-    '.json',
-    '/index.js',
-    '/index.json'
- ];
-
 require.resolve = function(path) {
   if (path.charAt(0) === '/') path = path.slice(1);
 
-  for (var i = 0; i < 5; i++) {
-    var fullPath = path + require.exts[i];
-    if (require.modules.hasOwnProperty(fullPath)) return fullPath;
-    if (require.aliases.hasOwnProperty(fullPath)) return require.aliases[fullPath];
+  var paths = [
+    path,
+    path + '.js',
+    path + '.json',
+    path + '/index.js',
+    path + '/index.json'
+  ];
+
+  for (var i = 0; i < paths.length; i++) {
+    var path = paths[i];
+    if (require.modules.hasOwnProperty(path)) return path;
+    if (require.aliases.hasOwnProperty(path)) return require.aliases[path];
   }
 };
 
@@ -100,7 +93,6 @@ require.resolve = function(path) {
  */
 
 require.normalize = function(curr, path) {
-
   var segs = [];
 
   if ('.' != path.charAt(0)) return path;
@@ -109,12 +101,13 @@ require.normalize = function(curr, path) {
   path = path.split('/');
 
   for (var i = 0; i < path.length; ++i) {
-    if ('..' === path[i]) {
+    if ('..' == path[i]) {
       curr.pop();
     } else if ('.' != path[i] && '' != path[i]) {
       segs.push(path[i]);
     }
   }
+
   return curr.concat(segs).join('/');
 };
 
@@ -140,14 +133,9 @@ require.register = function(path, definition) {
 
 require.alias = function(from, to) {
   if (!require.modules.hasOwnProperty(from)) {
-    throwError()
-    return
-  }
-  require.aliases[to] = from;
-
-  function throwError () {
     throw new Error('Failed to alias "' + from + '", it does not exist');
   }
+  require.aliases[to] = from;
 };
 
 /**
@@ -160,6 +148,18 @@ require.alias = function(from, to) {
 
 require.relative = function(parent) {
   var p = require.normalize(parent, '..');
+
+  /**
+   * lastIndexOf helper.
+   */
+
+  function lastIndexOf(arr, obj) {
+    var i = arr.length;
+    while (i--) {
+      if (arr[i] === obj) return i;
+    }
+    return -1;
+  }
 
   /**
    * The relative require() itself.
@@ -176,20 +176,16 @@ require.relative = function(parent) {
 
   localRequire.resolve = function(path) {
     var c = path.charAt(0);
-    if ('/' === c) return path.slice(1);
-    if ('.' === c) return require.normalize(p, path);
+    if ('/' == c) return path.slice(1);
+    if ('.' == c) return require.normalize(p, path);
 
     // resolve deps by returning
     // the dep in the nearest "deps"
     // directory
     var segs = parent.split('/');
-    var i = segs.length;
-    while (i--) {
-      if (segs[i] === 'deps') {
-        break;
-      }
-    }
-    path = segs.slice(0, i + 2).join('/') + '/deps/' + path;
+    var i = lastIndexOf(segs, 'deps') + 1;
+    if (!i) i = 0;
+    path = segs.slice(0, i + 1).join('/') + '/deps/' + path;
     return path;
   };
 
@@ -385,7 +381,7 @@ require.register("dashboard/dashboardController.js", function(exports, require, 
  * Created by Larry Eliemenye on 27/05/2014.
  */
 var DashboardController = function($rootScope, $scope, $http){
-
+    console.log($scope);
 }
 
 module.exports = DashboardController;
@@ -511,10 +507,3 @@ require.alias("publications/index.js", "epublica/deps/publications/index.js");
 require.alias("publications/index.js", "publications/index.js");
 require.alias("publications/index.js", "publications/index.js");
 require.alias("epublica/client.js", "epublica/index.js");
-if (typeof exports == 'object') {
-  module.exports = require('epublica');
-} else if (typeof define == 'function' && define.amd) {
-  define(function(){ return require('epublica'); });
-} else {
-  window['epublica'] = require('epublica');
-}})();
