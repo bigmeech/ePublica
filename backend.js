@@ -14,7 +14,8 @@ var express = require('express'),
     epub = require("./lib/epub-processor"),
     fs = require("fs"),
     mongoClient = new mClient(new mServer('localhost',27017,{native_parser:true})),
-    database = mongoClient.db("kawee");
+    database = mongoClient.db("kawee")
+    RedisStore = require("connect-redis")(express);
 
 //routes definition
 var users = require('./lib/users/routes')(database),
@@ -37,20 +38,43 @@ app.configure(function () {
     app.use(express.urlencoded());
     app.use(express.methodOverride());
     app.use(express.multipart());
-    app.use(express.cookieParser('your secret here'));
-    app.use(express.session({secret: "Opensesamie85"}));
+    app.use(express.cookieParser('Opensesamie85'));
+    app.use(express.session({
+        store:new RedisStore({
+            host:'localhost',
+            port:6379,
+            db:2
+        }),
+        scecret:"Opensesamie85"
+    }));
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(passport.initialize());
-    app.use(passport.session());
+    //app.use(passport.initialize());
+    //app.use(passport.session());
     app.use(express.errorHandler());
-    passport.use(new LocalStrategy(
+   passport.use(new LocalStrategy(
         function (username, password, done) {
             process.nextTick(function () {
                 return done;
             })
         }));
-})
+});
+
+//Route PassThroughs
+var getError = function(message, status){
+    var e = new Error(message);
+    e.status = status;
+    return e;
+}
+
+var isLoggedIn = function(req,res,next){
+    console.log(req.session.loggedIn);
+    var loggedIn = req.session.loggedIn;
+    if(!loggedIn){
+        return next(getError("User is Not Logged In",401)) // Unauthoriased Loggin
+    }
+    return next()
+}
 
 // development only
 if ('development' == app.get('env')) {
@@ -64,14 +88,13 @@ app.get('/', function (req, res) {
 app.get('/users', users.getUser);
 
 //publications api
-app.get('/publication/:pubId',pub.getPublication);
-app.post('/publication/:pubId',pub.setPublication);
-app.put('/publication', pub.createPublication);
-app.delete('/publication/:pubId', pub.deletePublication);
+app.get('/publication/:pubId', isLoggedIn, pub.getPublication);
+app.post('/publication/:pubId', isLoggedIn, pub.setPublication);
+app.put('/publication', isLoggedIn, pub.createPublication);
+app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
 
 //auth api
-app.post('/login',passport.authenticate('local', {successRedirect: '/loginGood', failureRedirect: '/loginBad'}));
-
+app.post('/login',pass.verifier);
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
