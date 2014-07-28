@@ -9,17 +9,19 @@ var express = require('express'),
     cons = require("consolidate"),
     passport = require("passport"),
     LocalStrategy = require("passport-local").Strategy,
-    mClient = require('mongodb').MongoClient,
-    mServer = require('mongodb').Server,
+    mongoose = require("mongoose"),
     epub = require("./lib/epub-processor"),
     fs = require("fs"),
-    mongoClient = new mClient(new mServer('localhost',27017,{native_parser:true})),
-    database = mongoClient.db("kawee")
     RedisStore = require("connect-redis")(express);
+
+//init Mongoose and get DB Connection
+mongoose.connect("mongodb://localhost/kawee")
+var dbcon = mongoose.connection,
+    database = require('./lib/database')(mongoose);
 
 //routes definition
 var users = require('./lib/users/routes')(database),
-    pass = require('./lib/auth/routes')(database),
+    auth = require('./lib/auth/routes')(database),
     pub = require("./lib/publications/routes")(database)
 
 
@@ -85,7 +87,7 @@ if ('development' == app.get('env')) {
 app.get('/', function (req, res) {
     res.render('index')
 });
-app.get('/users', users.getUser);
+app.put('/signup', auth.signup);
 
 //publications api
 app.get('/publication/:pubId', isLoggedIn, pub.getPublication);
@@ -94,7 +96,7 @@ app.put('/publication', isLoggedIn, pub.createPublication);
 app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
 
 //auth api
-app.post('/login',pass.verifier);
+app.post('/login',auth.verifier);
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -112,7 +114,8 @@ app.all('*', function(req,res){
     res.render('lost');
 });
 
-mongoClient.open(function(err, mongoc){
+dbcon.on('error',console.error.bind(console,'Failed to Connect to Mongo Via Mongoose'))
+dbcon.once('open',function(err, connection){
     if(err) throw err
     app.listen(app.get('port'))
     console.log('Express server listening on port ' + app.get('port'));
