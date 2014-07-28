@@ -96,7 +96,7 @@ app.put('/publication', isLoggedIn, pub.createPublication);
 app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
 
 //auth api
-app.post('/login',auth.verifier);
+app.post('/login', auth.verifier);
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
