@@ -27,6 +27,7 @@
     "oauthorize": "*",
     "passport": "*",
     "passport-local": "*",
+    "passport-local-mongoose": "^0.3.0",
     "swig": "*",
     "xml2js": "*"
   },

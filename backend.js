@@ -51,15 +51,14 @@ app.configure(function () {
     }));
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
-    //app.use(passport.initialize());
-    //app.use(passport.session());
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(express.errorHandler());
-   passport.use(new LocalStrategy(
-        function (username, password, done) {
-            process.nextTick(function () {
-                return done;
-            })
-        }));
+
+    //passport auth config
+    passport.use(new LocalStrategy(auth.verifier));
+    passport.serializeUser(auth.serialiseUser());
+    passport.deserializeUser(auth.deserialiseUser());
 });
 
 //Route PassThroughs
@@ -84,10 +83,8 @@ if ('development' == app.get('env')) {
 
 //express route definitions
 //----------------------------------------------
-app.get('/', function (req, res) {
-    res.render('index')
-});
-app.put('/signup', auth.signup);
+app.get('/', function (req, res) {res.render('index')});
+app.post('/signup', auth.signup);
 
 //publications api
 app.get('/publication/:pubId', isLoggedIn, pub.getPublication);
@@ -97,12 +94,8 @@ app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
 
 //auth api
 app.post('/login', auth.verifier);
-passport.serializeUser(function (user, done) {
-    done(null, user);
-});
-passport.deserializeUser(function (user, done) {
-    done(null, user);
-});
+
+
 app.get('/loginGood', function (req, res) {
     res.send("Welcome to profile");
 });
