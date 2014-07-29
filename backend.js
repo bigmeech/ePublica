@@ -92,7 +92,7 @@ app.put('/signup', auth.signup);
 //publications api
 app.get('/publication/:pubId', isLoggedIn, pub.getPublication);
 app.post('/publication/:pubId', isLoggedIn, pub.setPublication);
-app.put('/publication', isLoggedIn, pub.createPublication);
+app.post('/publication', isLoggedIn, pub.createPublication);
 app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
 
 //auth api
