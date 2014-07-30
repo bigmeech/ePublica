@@ -13,6 +13,7 @@
     "consolidate": "*",
     "ejs": "*",
     "express": "3.5.1",
+    "ini": "^1.2.1",
     "jade": "*",
     "mkdirp": "^0.5.0",
     "mongodb": "*",
