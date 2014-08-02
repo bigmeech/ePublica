@@ -22,8 +22,9 @@ var dbcon = mongoose.connection,
 //routes definition
 var users = require('./lib/users/routes')(database),
     auth = require('./lib/auth/routes')(database),
-    pub = require("./lib/publications/routes")(database)
-
+    pub = require("./lib/publications/routes")(database),
+    userAuth = database.getModel("User")
+    console.log(userAuth)
 
 var staticDir = path.join(__dirname, "/public");
 
@@ -49,16 +50,16 @@ app.configure(function () {
         }),
         scecret:"Opensesamie85"
     }));
-    app.use(app.router);
-    app.use(express.static(path.join(__dirname, 'public')));
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(app.router);
+    app.use(express.static(path.join(__dirname, 'public')));
     app.use(express.errorHandler());
 
     //passport auth config
-    passport.use(new LocalStrategy(auth.verifier));
-    passport.serializeUser(auth.serialiseUser());
-    passport.deserializeUser(auth.deserialiseUser());
+    passport.use(new LocalStrategy(userAuth.authenticate()));
+    passport.serializeUser(userAuth.serializeUser());
+    passport.deserializeUser(userAuth.deserializeUser());
 });
 
 //Route PassThroughs
@@ -93,16 +94,10 @@ app.post('/publication', isLoggedIn, pub.createPublication);
 app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
 
 //auth api
-app.post('/login', auth.verifier);
-
-
-app.get('/loginGood', function (req, res) {
-    res.send("Welcome to profile");
+app.post('/signin', passport.authenticate('local'),function(req,res){
+    res.json("#/main/dashboard/"+req.session.id);
 });
-app.get('/loginBad', function (req, res) {
-    res.send("Failed to LogIn");
-    console.log("Login Bad Called");
-});
+
 app.all('*', function(req,res){
     res.render('lost');
 });
