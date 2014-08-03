@@ -48,7 +48,7 @@ app.configure(function () {
             port:6379,
             db:2
         }),
-        scecret:"Opensesamie85"
+        secret:"Opensesamie85"
     }));
     app.use(passport.initialize());
     app.use(passport.session());
@@ -70,12 +70,21 @@ var getError = function(message, status){
 }
 
 var isLoggedIn = function(req,res,next){
-    console.log(req.session.loggedIn);
-    var loggedIn = req.session.loggedIn;
-    if(!loggedIn){
-        return next(getError("User is Not Logged In",401)) // Unauthoriased Loggin
+    if(req.session.loggedIn){
+        console.log({
+            message:"User Signed In:"+req.session.loggedIn,
+            session_id: req.session.id
+            });
+        next()
     }
-    return next()
+    else
+    {
+        res.json({
+            error:true,
+            message:"User not logged in",
+            session_id:req.session.id},401) // Unauthoriased Loggin
+    }
+    next()
 }
 
 // development only
@@ -95,7 +104,15 @@ app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
 
 //auth api
 app.post('/signin', passport.authenticate('local'),function(req,res){
-    res.json("#/main/dashboard/"+req.session.id);
+    req.session.loggedIn = true;
+    console.log(req.session.id);
+    res.json("#/main/dashboard/");
+});
+
+app.post('/signout',function(req,res){
+    req.session.destroy();
+    req.logout();
+    res.redirect("login");
 });
 
 app.all('*', function(req,res){
