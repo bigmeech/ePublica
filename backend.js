@@ -24,7 +24,7 @@ var users = require('./lib/users/routes')(database),
     auth = require('./lib/auth/routes')(database),
     pub = require("./lib/publications/routes")(database),
     userAuth = database.getModel("User")
-    console.log(userAuth)
+    //console.log(userAuth)
 
 var staticDir = path.join(__dirname, "/public");
 
@@ -77,14 +77,7 @@ var isLoggedIn = function(req,res,next){
             });
         next()
     }
-    else
-    {
-        res.json({
-            error:true,
-            message:"User not logged in",
-            session_id:req.session.id},401) // Unauthoriased Loggin
-    }
-    next()
+    else return next(getError("User is not currently logged in",401))
 }
 
 // development only
@@ -97,7 +90,9 @@ app.get('/', function (req, res) {res.render('index')});
 app.post('/signup', auth.signup);
 
 //publications api
-app.get('/publication/:pubId', isLoggedIn, pub.getPublication);
+app.get('/publication/:pubId', isLoggedIn, pub.getPublication, function(){
+
+});
 app.post('/publication/:pubId', isLoggedIn, pub.setPublication);
 app.post('/publication', isLoggedIn, pub.createPublication);
 app.delete('/publication/:pubId', isLoggedIn, pub.deletePublication);
@@ -115,9 +110,9 @@ app.post('/signout',function(req,res){
     res.redirect("login");
 });
 
-app.all('*', function(req,res){
+/*app.all('*', function(req,res){
     res.render('lost');
-});
+});*/
 
 dbcon.on('error',console.error.bind(console,'Failed to Connect to Mongo Via Mongoose'))
 dbcon.once('open',function(err, connection){

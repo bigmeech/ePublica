@@ -1,22 +1,26 @@
 {
-  "name": "epublica",
-  "repo": "epublica/epublica",
-  "description": "Main BE application, to manage users, store, content publishing, and integration APIs",
-  "version": "0.0.1",
-  "keywords": [],
-  "development": {},
-  "license": "MIT",
-  "main": "client.js",
-  "paths":["lib"],
-  "local":[
-    "app",
-    "editor",
-    "home",
-    "appTheme",
-    "dashboard",
-    "publications"
-  ],
-  "scripts": [
-    "client.js"
-  ]
+    "name": "epublica",
+    "repo": "epublica/epublica",
+    "description": "Main BE application, to manage users, store, content publishing, and integration APIs",
+    "version": "0.0.1",
+    "keywords": [],
+    "dependencies": {
+        "components/jquery": "*",
+        "components/underscore": "*"
+    },
+    "development": {},
+    "license": "MIT",
+    "main": "client.js",
+    "paths": ["lib"],
+    "local": [
+        "app",
+        "editor",
+        "home",
+        "appTheme",
+        "dashboard",
+        "publications"
+    ],
+    "scripts": [
+        "client.js"
+    ]
 }

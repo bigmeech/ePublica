@@ -2,11 +2,10 @@
 <html ng-app="epublica" ng-controller="MainApplicationController">
 <head>
     <title>ePublica - Stop killing Trees! Start making Digital Books</title>
-    <script data-require="jquery@2.0.3" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
     <script src="http://cburgmer.github.io/rasterizeHTML.js/rasterizeHTML.allinone.js"></script>
     <script src="lib/angular-1.2.9.js"></script>
-    <script src="build/build.js"></script>
+
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Abel|Noto+Sans|Droid+Sans|Lato:300,400,900,400italic|PT+Sans+Narrow|Open+Sans:400italic,600italic,700italic,400,300,600|Roboto:400,300|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
@@ -21,7 +20,11 @@
 <div ui-view class="main">
     <div v-loader></div>
 </div>
-
+<script src="build/build.js"></script>
+<script>
+    var jQuery = $ = require("jquery");
+</script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="lib/angular-ui-router.min.js"></script>
 <script src="lib/nicEdit.js"></script>
 <script>require("epublica")</script>
